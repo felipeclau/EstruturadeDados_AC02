@@ -11,16 +11,28 @@ def registroPost(postagem):
         print('Post número {} criado.'.format(len(postagem)))
 
 # função com o resultado após a execução de uma das opções do menu.
-    def resultado(self, indice, likes):
-            self.indice()
-            self.likes()
-            pass
+def numeroPostagens(postagem):
+    indice = 0
+    print('Índice: ', end='')
+    while indice < len(postagem):
+        print('{} '.format(indice), end='')
+        indice += 1
+    print('\n')
+    return indice          
         
 
 # função para dar likes
     def darLikes(postagem, indicepostagem):
-        postagem[indicepostagem]
+        postagem[indicepostagem] = postagem[indicepostagem] + 1
+        
     
+def numeroLikes(postagem):
+    likes = ''
+    print('Likes: ')
+    for i in postagem:
+        indice = print('{} '.format(i), end='')
+        print('\n')
+    return i 
 
 # função sub menu
 def submenu():
