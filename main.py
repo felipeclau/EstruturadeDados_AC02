@@ -19,12 +19,15 @@ def numeroPostagens(postagem):
         indice += 1
     print('\n')
     return indice          
-        
+
 
 # função para dar likes
-    def darLikes(postagem, indicepostagem):
-        postagem[indicepostagem] = postagem[indicepostagem] + 1
-        
+    def darLikes(npost, nlikes):
+        npost = int(input('Ingresse o número do post ao que você quer dar likes: '))
+        nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
+        postagem[npost] = postagem[npost] + nlikes
+        return postagem
+
     
 def numeroLikes(postagem):
     likes = ''
