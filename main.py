@@ -22,15 +22,28 @@ def numeroPostagens(postagem):
 
 
 # função para dar likes
-    def darLikes(npost, nlikes):
-        npost = int(input('Ingresse o número do post ao que você quer dar likes: '))
-        nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
-        postagem[npost] = postagem[npost] + nlikes
-        return postagem
+def darLikes(postagem):
+    npost = int(input('Ingresse o número do post ao que você quer dar likes: '))
+    nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
+    postagem[npost] = postagem[npost] + nlikes
+    if postagem.index = 0:
+        if nlikes <= 10:
+            postagem[npost + 1] = postagem[npost + 1] + 1
+        else:
+            postagem[npost + 1] = postagem[npost + 1] + nlikes //2
+    else:
+        if nlikes <= 10:
+            postagem[npost + 1] = postagem[npost + 1] + 1
+            postagem[npost - 1] = postagem[npost - 1] + 1
+        else:
+            postagem[npost + 1] = postagem[npost + 1] + nlikes //2
+            postagem[npost - 1] = postagem[npost - 1] + nlikes //2
+            
+    return postagem
 
     
 def numeroLikes(postagem):
-    likes = ''
+    indice = ''
     print('Likes: ')
     for i in postagem:
         indice = print('{} '.format(i), end='')
@@ -52,14 +65,15 @@ def submenu():
                 break
             else:
                 print('Opção inválida!')
-            
 
-
-    
-
-        
 
 # função top posts com mais likes
     def topLikes(self):
         pass
             
+
+x = menu()
+if x == 1:
+    registroPost()
+if x == 2:
+    
