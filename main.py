@@ -53,10 +53,10 @@ def darLikes(postagem):
     
 def numeroLikes(postagem):
     indice = ''
-    print('Likes: ')
+    print('Likes: ', end='')
     for i in postagem:
         indice = print('{} '.format(i), end='')
-        print('\n')
+    print('\n')
     return i 
 
 # função sub menu
