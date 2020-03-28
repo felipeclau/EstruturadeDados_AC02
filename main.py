@@ -24,13 +24,22 @@ def numeroPostagens(postagem):
 # função para dar likes
 def darLikes(postagem):
     npost = int(input('Ingresse o número do post ao que você quer dar likes: '))
+    if npost >= len(postagem):
+        from random import randint
+        npost = randint(0,len(postagem)-1)
     nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
     postagem[npost] = postagem[npost] + nlikes
-    if postagem.index = 0:
-        if nlikes <= 10:
-            postagem[npost + 1] = postagem[npost + 1] + 1
-        else:
-            postagem[npost + 1] = postagem[npost + 1] + nlikes //2
+    if npost == 0 or npost == len(postagem) - 1:
+        if npost == 0:
+            if nlikes <= 10:
+                postagem[npost + 1] = postagem[npost + 1] + 1
+            else:
+                postagem[npost + 1] = postagem[npost + 1] + nlikes //2
+        if npost == len(postagem) - 1:
+            if nlikes <= 10:
+                postagem[npost - 1] = postagem[npost - 1] + 1
+            else:
+                postagem[npost - 1] = postagem[npost - 1] + nlikes //2
     else:
         if nlikes <= 10:
             postagem[npost + 1] = postagem[npost + 1] + 1
@@ -38,7 +47,7 @@ def darLikes(postagem):
         else:
             postagem[npost + 1] = postagem[npost + 1] + nlikes //2
             postagem[npost - 1] = postagem[npost - 1] + nlikes //2
-            
+
     return postagem
 
     
