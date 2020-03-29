@@ -15,7 +15,7 @@ def numeroPostagens(postagem):
     indice = 0
     print('Índice: ', end='')
     while indice < len(postagem):
-        print('{} '.format(indice), end='')
+        print('{} '.format(indice), end='')     # printando os índices em lista.
         indice += 1
     print('\n')
     return indice          
@@ -23,12 +23,12 @@ def numeroPostagens(postagem):
 
 # função para dar likes
 def darLikes(postagem):
-    npost = int(input('Ingresse o número do post ao que você quer dar likes: '))
-    if npost >= len(postagem):
+    npost = int(input('Ingresse o número do post ao que você quer dar likes: ')) 
+    if npost >= len(postagem):              # se o post for maior que a lista da postagem, escolhe um número aleatorio dentro do range da lista.
         from random import randint
         npost = randint(0,len(postagem)-1)
     nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
-    postagem[npost] = postagem[npost] + nlikes
+    postagem[npost] = postagem[npost] + nlikes      # altera o valor da lista.
     if npost == 0 or npost == len(postagem) - 1:
         if npost == 0:
             if nlikes <= 10:
@@ -50,16 +50,29 @@ def darLikes(postagem):
 
     return postagem
 
-    
+# função para imprimir o resultado das likes.
 def numeroLikes(postagem):
     indice = ''
     print('Likes: ', end='')
     for i in postagem:
-        indice = print('{} '.format(i), end='')
+        indice = print('{} '.format(i), end='')   # printando os likes em linha.
     print('\n')
     return i 
 
+# função top posts com mais likes
+def topLikes(postagem):
+    print('Top:     1    2    3') # cabeçalho
+    ordemIndice = ''
+    lista = []                      #lista vazia para colocar o top 3.
+    lista.append(postagem.index([max(postagem)))  # índice com o maior valor da lista
+
+    print('Índice: ')
+    print('Likes: {}' .format(sorted(postagem, reverse=True)))    # ordenação em ordem descrescente da lista, sem alterar a lista.
+
+
 # função sub menu
+
+'''
 def submenu():
     print('A lista de postagens é o seguinte: {}', postagem)
     print('Índice: \nLikes: ')
@@ -74,15 +87,5 @@ def submenu():
                 break
             else:
                 print('Opção inválida!')
-
-
-# função top posts com mais likes
-    def topLikes(self):
-        pass
-            
-
-x = menu()
-if x == 1:
-    registroPost()
-if x == 2:
-    
+    pass
+'''
