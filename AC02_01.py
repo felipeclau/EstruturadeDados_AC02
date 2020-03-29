@@ -100,30 +100,32 @@ class Post:
             
 
 # função para criar um menu.
-    def menu(self):
-        print('-='*17)
-        print('Menu Sistema Gestor de Postagens')
-        print('    1) Criar um post \n    2) Dar likes a um post \n    3) Top posts com mais likes')
-        opcao = input('\nDigite uma opção: ')
-        print('-='*17)
-        return opcao
+def menu():
+    print('-='*17)
+    print('Menu Sistema Gestor de Postagens')
+    print('    1) Criar um post \n    2) Dar likes a um post \n    3) Top posts com mais likes')
+    opcao = int(input('\nDigite uma opção: '))
+    print('-='*17)
+    return opcao
 
 
 # função para retornar ao menu
-    def retornar(self):
-        resposta = str(input('Aperte R para voltar: ')).upper().strip()
-        if resposta == 'R':
-            return resposta
-        else:
-            print('-='*17)
-            print('\n PROGRAMA FINALIZADO')
-            print('-='*17)
-            return resposta
+def retornar():
+    resposta = str(input('Aperte R para voltar: ')).upper().strip()
+    if resposta == 'R':
+        return resposta
+    else:
+        print('-='*17)
+        print('\n PROGRAMA FINALIZADO\n')
+        print('-='*17)
+        return resposta
 
 postagem = []
+empresa = Post(postagem)
+
 while True:
     empresa = Post(postagem)
-    opc = empresa.menu()
+    opc = menu()
     if opc == 1:
         empresa.registroPost(postagem)
     elif opc == 2:
@@ -131,9 +133,10 @@ while True:
     elif opc == 3:
         empresa.topLikes(postagem)
     else:
-        opc = empresa.menu()
-        x = empresa.retornar()
+        opc = menu()
+    x = retornar()
     if x == 'R':
         continue
     else:
         break
+    
