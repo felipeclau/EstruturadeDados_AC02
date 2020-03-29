@@ -1,3 +1,4 @@
+# função para criar um menu.
 def menu():
     print('-='*17)
     print('Menu Sistema Gestor de Postagens')
@@ -5,37 +6,38 @@ def menu():
     opcao = int(input('\nDigite uma opção: '))
     print('-='*17)
     return opcao
+
 # função para criar um post
 def registroPost(postagem):
-    postagem.append(0)
+    postagem.append(0)                                  # acrescenta itens na lista "postagem"
     print('Post número {} criado. \n'.format(len(postagem)))
     print('A lista de postagens é a seguinte: \n')
     
-    indice = 0
+    indice = 0                                          # printando os índices em linha.
     print('Índice: ', end='')
     while indice < len(postagem):
-        print('{} '.format(indice), end=' ')     # printando os índices em lista.
+        print('{} '.format(indice), end=' ')     
         indice += 1
     print('\n')
     
-    likes = ''
+    likes = ''                                          # printando os likes em linha.
     print('Likes: ', end='')
     for i in postagem:
-        likes = print(' {} '.format(i), end='')   # printando os likes em linha.
+        likes = print(' {} '.format(i), end='')   
     print('\n')   
 
 # função para dar likes
 def darLikes(postagem):
-    if len(postagem) == 0:
+    if len(postagem) == 0:                              # condição para caso não haja postagens.
         print('Não há posts para dar like.\n')
     else:
         npost = int(input('Ingresse o número do post ao que você quer dar likes: ')) 
-        if npost >= len(postagem):              # se o post for maior que a lista da postagem, escolhe um número aleatorio dentro do range da lista.
+        if npost >= len(postagem):                      # se o post for maior que a lista da postagem, escolhe um número aleatorio dentro do range da lista.
             from random import randint
             npost = randint(0,len(postagem)-1)
         nlikes = int(input('Informe o número de likes que vocêr quer atribuir: '))
         postagem[npost] = postagem[npost] + nlikes      # altera o valor da lista.
-        if npost == 0 or npost == len(postagem) - 1:
+        if npost == 0 or npost == len(postagem) - 1:    # loop para as regras do negócio.
             if npost == 0:
                 if nlikes <= 10:
                     postagem[npost + 1] = postagem[npost + 1] + 1
@@ -55,23 +57,23 @@ def darLikes(postagem):
                 postagem[npost - 1] = postagem[npost - 1] + nlikes //2
 
         print('\n')
-        indice = 0
-        print('Índice: ', end='')
+        indice = 0                                  # printando os índices em linha.
+        print('Índice: ', end='')                   
         while indice < len(postagem):
-            print('{} '.format(indice), end=' ')     # printando os índices em lista.
+            print('{} '.format(indice), end=' ')     
             indice += 1
         print('\n')
         
-        likes = ''
+        likes = ''                                  # printando os likes em linha.
         print('Likes: ', end='')
         for i in postagem:
-            likes = print(' {} '.format(i), end='')   # printando os likes em linha.
+            likes = print(' {} '.format(i), end='')   
         print('\n')  
     
 
 # função top posts com mais likes
 def topLikes(postagem):
-    if len(postagem) == 0:
+    if len(postagem) == 0:              # condição para casa não haja postagens.
         print('Não ha postagens realizadas.\n')
     else:
         print('O top-3 posts com mais likes são: \n') 
@@ -89,8 +91,8 @@ def topLikes(postagem):
             del(copialista[copialista.index(maior)])                  # exclusão deste valor na lista copiada, para a próxima comparação entre a lista original e a cópia.
             
         print('Índice: {}'.format(top3))
-        listaDescrescente = sorted(postagem, reverse=True)
-        print('Likes: {}' .format(listaDescrescente[0:3]))    # ordenação dos valores descrescentes da lista, sem alterar a lista.
+        listaDescrescente = sorted(postagem, reverse=True)            # ordenação dos valores descrescentes da lista, sem alterar a lista.
+        print('Likes: {}' .format(listaDescrescente[0:3]))            # impressão somente dos 3 primeiros itens.
 
 
 # função para retornar ao menu
