@@ -8,17 +8,21 @@ def menu():
 # função para criar um post
 def registroPost(postagem):
     postagem.append(0)
-    print('Post número {} criado.'.format(len(postagem)))
-
-# função com o resultado após a execução de uma das opções do menu.
-def numeroPostagens(postagem):
+    print('Post número {} criado. \n'.format(len(postagem)))
+    print('A lista de postagens é a seguinte: \n')
+    
     indice = 0
     print('Índice: ', end='')
     while indice < len(postagem):
-        print('{} '.format(indice), end='')     # printando os índices em lista.
+        print('{} '.format(indice), end=' ')     # printando os índices em lista.
         indice += 1
     print('\n')
-    return indice          
+    
+    likes = ''
+    print('Likes: ', end='')
+    for i in postagem:
+        likes = print(' {} '.format(i), end='')   # printando os likes em linha.
+    print('\n')   
 
 
 # função para dar likes
@@ -48,22 +52,20 @@ def darLikes(postagem):
             postagem[npost + 1] = postagem[npost + 1] + nlikes //2
             postagem[npost - 1] = postagem[npost - 1] + nlikes //2
 
-    return postagem
-
-# função para imprimir o resultado das likes.
-def numeroLikes(postagem):
+    print('\n')
+    indice = 0
+    print('Índice: ', end='')
+    while indice < len(postagem):
+        print('{} '.format(indice), end=' ')     # printando os índices em lista.
+        indice += 1
+    print('\n')
+    
     likes = ''
     print('Likes: ', end='')
     for i in postagem:
-        likes = print('{} '.format(i), end='')   # printando os likes em linha.
-    print('\n')
-    return i 
-
-# função para retornar os resultados de indices e likes.
-def submenu(indice,likes):
-    print('A lista de postagens é o seguinte: {}')
-    print('Índice: \nLikes: ')
-
+        likes = print(' {} '.format(i), end='')   # printando os likes em linha.
+    print('\n')  
+    
 
 # função top posts com mais likes
 def topLikes(postagem):
@@ -82,3 +84,5 @@ def topLikes(postagem):
         
     print('Índice: {}'.format(top3))
     print('Likes: {}' .format(sorted(postagem, reverse=True)))    # ordenação dos valores descrescentes da lista, sem alterar a lista.
+
+
