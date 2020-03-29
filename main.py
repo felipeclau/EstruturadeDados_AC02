@@ -85,22 +85,28 @@ def topLikes(postagem):
             for valor in postagem:      # loop para pegar o maior valor na lista original
                 if valor == maior:
                     top3.append(postagem.index(valor))                # inclusão do índice de valor maior na lista top3.
+                    break
             del(copialista[copialista.index(maior)])                  # exclusão deste valor na lista copiada, para a próxima comparação entre a lista original e a cópia.
             
         print('Índice: {}'.format(top3))
-        print('Likes: {}' .format(sorted(postagem, reverse=True)))    # ordenação dos valores descrescentes da lista, sem alterar a lista.
+        listaDescrescente = sorted(postagem, reverse=True)
+        print('Likes: {}' .format(listaDescrescente[0:3]))    # ordenação dos valores descrescentes da lista, sem alterar a lista.
 
 
 # função para retornar ao menu
 def retornar():
     resposta = str(input('Aperte R para voltar: ')).upper().strip()
     if resposta == 'R':
-        menu()
+        return resposta
     else:
-        print('Programa finalizado')
+        print('-='*17)
+        print('\n PROGRAMA FINALIZADO')
+        print('-='*17)
+        return resposta
 
 
 postagem = []
+
 
 while True:
     opc = menu()
@@ -112,3 +118,8 @@ while True:
         topLikes(postagem)
     else:
         opc = menu()
+    x = retornar()
+    if x == 'R':
+        continue
+    else:
+        break
