@@ -7,8 +7,8 @@ def menu():
     return opcao
 # função para criar um post
 def registroPost(postagem):
-        postagem.append(0)
-        print('Post número {} criado.'.format(len(postagem)))
+    postagem.append(0)
+    print('Post número {} criado.'.format(len(postagem)))
 
 # função com o resultado após a execução de uma das opções do menu.
 def numeroPostagens(postagem):
@@ -52,40 +52,33 @@ def darLikes(postagem):
 
 # função para imprimir o resultado das likes.
 def numeroLikes(postagem):
-    indice = ''
+    likes = ''
     print('Likes: ', end='')
     for i in postagem:
-        indice = print('{} '.format(i), end='')   # printando os likes em linha.
+        likes = print('{} '.format(i), end='')   # printando os likes em linha.
     print('\n')
     return i 
 
+# função para retornar os resultados de indices e likes.
+def submenu(indice,likes):
+    print('A lista de postagens é o seguinte: {}')
+    print('Índice: \nLikes: ')
+
+
 # função top posts com mais likes
 def topLikes(postagem):
-    print('Top:     1    2    3') # cabeçalho
-    ordemIndice = ''
-    lista = []                      #lista vazia para colocar o top 3.
-    lista.append(postagem.index([max(postagem)))  # índice com o maior valor da lista
-
-    print('Índice: ')
-    print('Likes: {}' .format(sorted(postagem, reverse=True)))    # ordenação em ordem descrescente da lista, sem alterar a lista.
-
-
-# função sub menu
-
-'''
-def submenu():
-    print('A lista de postagens é o seguinte: {}', postagem)
-    print('Índice: \nLikes: ')
-    opc = ''
-    while True:
-        opc = str(input('Aperta R para voltar ou S para sair: ')).upper().strip()
-        if opc !='R' or opc != 'S':
-            if opc == 'R':
-                menu()
-                break
-            if opc == 'S':
-                break
-            else:
-                print('Opção inválida!')
-    pass
-'''
+    print('O top-3 posts com mais likes são: \n') 
+    print('Top:     1  2  3')       # cabeçalho
+    copialista = postagem[:]        # cópia da lista postagem, para fazer comparações.
+    top3 = []                       #lista vazia para colocar o top 3.
+    
+    for i in range(1,4):            # loop para pegar os 3 índices com maiores valores.
+        imaior = 0                  # maior índice
+        maior = max(copialista)     # variável para maior valor da lista copiada
+        for valor in postagem:      # loop para pegar o maior valor na lista original
+            if valor == maior:
+                top3.append(postagem.index(valor))                # inclusão do índice de valor maior na lista top3.
+        del(copialista[copialista.index(maior)])                  # exclusão deste valor na lista copiada, para a próxima comparação entre a lista original e a cópia.
+        
+    print('Índice: {}'.format(top3))
+    print('Likes: {}' .format(sorted(postagem, reverse=True)))    # ordenação dos valores descrescentes da lista, sem alterar a lista.
