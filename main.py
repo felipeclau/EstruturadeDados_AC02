@@ -13,17 +13,16 @@ def registroPost(postagem):
     print('Post número {} criado. \n'.format(len(postagem)))
     print('A lista de postagens é a seguinte: \n')
     
-    indice = 0                                          # printando os índices em linha.
-    print('Índice: ', end='')
+    indice = 0                                          
+    print('Índice: ', end='')                           # printando os índices em linha.
     while indice < len(postagem):
         print('{} '.format(indice), end=' ')     
         indice += 1
     print('\n')
     
-    likes = ''                                          # printando os likes em linha.
-    print('Likes: ', end='')
+    print('Likes: ', end='')                            # printando os likes em linha.
     for i in postagem:
-        likes = print(' {} '.format(i), end='')   
+        print(' {} '.format(i), end='')   
     print('\n')   
 
 # função para dar likes
@@ -64,10 +63,9 @@ def darLikes(postagem):
             indice += 1
         print('\n')
         
-        likes = ''                                  # printando os likes em linha.
-        print('Likes: ', end='')
+        print('Likes: ', end='')                    # printando os likes em linha.
         for i in postagem:
-            likes = print(' {} '.format(i), end='')   
+            print(' {} '.format(i), end='')   
         print('\n')  
     
 
@@ -82,7 +80,6 @@ def topLikes(postagem):
         top3 = []                       #lista vazia para colocar o top 3.
         
         for i in range(1,4):            # loop para pegar os 3 índices com maiores valores.
-            imaior = 0                  # maior índice
             maior = max(copialista)     # variável para maior valor da lista copiada
             for valor in postagem:      # loop para pegar o maior valor na lista original
                 if valor == maior:
@@ -125,3 +122,4 @@ while True:
         continue
     else:
         break
+

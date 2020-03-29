@@ -10,9 +10,8 @@ PERGUNTA 1: Likes de Postagens em Redes Sociais
 
 
 class Post:
-    def __init__(self, postagem, like):
+    def __init__(self, postagem):
         self.postagem = postagem
-        self.like = like
     
 # função para criar um post
     def registroPost(self, postagem):
@@ -27,10 +26,9 @@ class Post:
             indice += 1
         print('\n')
         
-        likes = ''                                          # printando os likes em linha.
-        print('Likes: ', end='')
+        print('Likes: ', end='')                            # printando os likes em linha.
         for i in postagem:
-            likes = print(' {} '.format(i), end='')   
+            print(' {} '.format(i), end='')   
         print('\n')  
 
 
@@ -72,10 +70,9 @@ class Post:
                 indice += 1
             print('\n')
             
-            likes = ''                                  # printando os likes em linha.
-            print('Likes: ', end='')
+            print('Likes: ', end='')                    # printando os likes em linha.
             for i in postagem:
-                likes = print(' {} '.format(i), end='')   
+                print(' {} '.format(i), end='')   
             print('\n')  
     
     
@@ -90,7 +87,6 @@ class Post:
             top3 = []                       #lista vazia para colocar o top 3.
             
             for i in range(1,4):            # loop para pegar os 3 índices com maiores valores.
-                imaior = 0                  # maior índice
                 maior = max(copialista)     # variável para maior valor da lista copiada
                 for valor in postagem:      # loop para pegar o maior valor na lista original
                     if valor == maior:
@@ -123,3 +119,21 @@ class Post:
             print('\n PROGRAMA FINALIZADO')
             print('-='*17)
             return resposta
+
+postagem = []
+while True:
+    empresa = Post(postagem)
+    opc = empresa.menu()
+    if opc == 1:
+        empresa.registroPost(postagem)
+    elif opc == 2:
+        empresa.darLikes(postagem)
+    elif opc == 3:
+        empresa.topLikes(postagem)
+    else:
+        opc = empresa.menu()
+        x = empresa.retornar()
+    if x == 'R':
+        continue
+    else:
+        break
