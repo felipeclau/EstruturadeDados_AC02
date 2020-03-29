@@ -120,9 +120,11 @@ def retornar():
         print('-='*17)
         return resposta
 
+
+# EXECUÇÃO DO PRORAMA
+
 postagem = []
 empresa = Post(postagem)
-
 while True:
     empresa = Post(postagem)
     opc = menu()
