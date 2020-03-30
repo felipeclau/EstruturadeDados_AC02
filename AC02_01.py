@@ -10,9 +10,10 @@ PERGUNTA 1: Likes de Postagens em Redes Sociais
 
 
 class Post:
+# construtor
     def __init__(self, postagem):
         self.postagem = postagem
-    
+# métodos   
 # função para criar um post
     def registroPost(self, postagem):
         postagem.append(0)                                  # acrescenta itens na lista "postagem"
