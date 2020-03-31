@@ -8,29 +8,30 @@
 PERGUNTA 2: Rover Curiosity
 '''
 class Pilha:
-    #construtor
+#construtor
     def __init__(self):
         self.pilha = [] 
 
-    #metodos
-    def push(self, valor):
+#metodos
+# incluir valor.    
+    def push(self, valor):                              
         self.pilha.append(valor)
-
+# retirar valor.
     def pop(self):
         return self.pilha.pop()
-
+# identificar se a pilha está vazia.
     def isEmpty(self):
         if len(self.pilha) == 0:
             return True
         return False
-
+# tamanho da pilha.
     def size(self):
         return len(self.pilha)
-
+# índice o "topo" da pilha.
     def top(self):
         indice_topo = len(self.pilha) - 1
         return self.pilha[indice_topo] 
-
+# impressão 
     def imprimir_c(self):
         indice = len(self.pilha) - 1
         
@@ -41,9 +42,9 @@ class Pilha:
 class Rocha:
 # contrutor
     def __init__(self):
-        self.rochatipo1 = []
-        self.rochatipo2 = []
-        self.rochatipo3 = []
+        self.rochatipo1 = []                        # Lista para rochas do tipo 1.
+        self.rochatipo2 = []                        # Lista para rochas do tipo 2.
+        self.rochatipo3 = []                        # Lista para rochas do tipo 3.
 
 # métodos 
 # função para incluir Rochas.
@@ -53,27 +54,65 @@ class Rocha:
         if peso < 2.5:                              # condição para incluir a Rocha, e dependendo do tipo de Rocha, inclui-se na lista corresondente.
             if tipoRocha == 1:
                 self.rochatipo1.append(peso)
-                return('Peso da rocha {}. Rocha incluída no tipo 1'.format(peso))
+                print('Peso da rocha {}. Rocha incluída no TIPO 1'.format(peso))
             elif tipoRocha == 2:
                 self.rochatipo2.append(peso)
-                return('Peso da rocha {}. Rocha incluída no tipo 2'.format(peso))
-            elif tipoRocha == 3:
-                self.rochatipo2.append(peso)
-                return('Peso da rocha {}. Rocha incluída no tipo 3'.format(peso))
+                print('Peso da rocha {}. Rocha incluída no TIPO 2'.format(peso))
             else:
-                return('Peso da rocha {}. Rocha descartada.'.format(peso))
+                self.rochatipo2.append(peso)
+                print('Peso da rocha {}. Rocha incluída no TIPO 3'.format(peso))
+        else:
+            print('Peso da rocha {}. Rocha descartada.'.format(peso))
             
 # função para saber o peso total das rochaas incluídas.
     def pesoTotalRochas(self):                      
         return sum(self.rochatipo1) + sum(self.rochatipo2) + sum(self.rochatipo3)
 
-    
+# função para equilibrar a lista
+    def retirarPedras(self):
+        diferenca = 2                                   # variável para calcular a diferença entre o tamanho das listas.
+        while diferenca > 1:            
+            q1 = len(self.rochatipo1)                   # variável para tamanho da lista do tipo de rocha
+            q2 = len(self.rochatipo2)                   # variável para tamanho da lista do tipo de rocha
+            q3 = len(self.rochatipo3)                   # variável para tamanho da lista do tipo de rocha
+            
+            maiorQ = 0                                  # verificar qual das listas possui maior número de elementos
+            if q1 > q2 and q1 > q3:
+                maiorQ = q1
+            elif q2 > q1 and q2 > q3:
+                maiorQ = q2
+            else:
+                maiorQ = q3
+            
+            menorQ = 0                                  # verificar qual das listas possui menor número de elementos
+            if q1 < q2 and q1 < q3:
+                menorQ = q1
+            elif q2 < q1 and q2 < q3:
+                menorQ = q2
+            else:
+                menorQ = q3
+            
+            diferenca = maiorQ - menorQ                 # calcular a diferença do maior número para o menor
+            if diferenca > 1:                           # a diferença do maior para o menor vai servir para abater elementos da maior lista
+                    if maiorQ == q1:
+                        while menorQ < len(rochatipo1)-1:
+                            rochatipo1.pop(len(rochatipo1)-1)
+                    if maiorQ == q2:
+                        while menorQ < len(rochatipo2)-1:
+                            rochatipo1.pop(len(rochatipo2)-1)
+                    if maiorQ == q3:
+                        while menorQ < len(rochatipo3)-1:
+                            rochatipo1.pop(len(rochatipo3)-1)
+        print('Rochas retiradas. Tipos de rochas equilibradas.')
+        
 
 class Lixo:
-    # contrutor
+# contrutor
     def ___init___(self):
-        self.pilhaLixo = Pilha()
-    
+        self.pilhaLixoMetal = Pilha()               # Lista para lixo do tipo metal.
+        self.pilhaLixoFunk = Pilha()                # Lista para lixo do tipo não metal.
+
+# função para incluir lixo  
     def incluirLixo(self, pesoLixo):
         self.pilhaLixo.push(pesoLixo)
 
@@ -102,4 +141,11 @@ nlixo = randint(30,120)                 # número aleatório entre 30 e 120 de e
 for i in range(0,nlixo):                # inserção do pedo do lixo dentro de um range.
     lpedra.append(round(uniform(1.12,8.55),2))
 
-peso = lpedra[randint(0,len(lpedra))]
+
+trip1 = Rocha()
+for i in range(0,10):
+    peso = lpedra[randint(0,len(lpedra))]
+    trip1.incluirRocha(peso)
+
+print('\nPeso total de rochas: ', trip1.pesoTotalRochas())
+
