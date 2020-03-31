@@ -66,7 +66,7 @@ class Rocha:
             
 # função para saber o peso total das rochaas incluídas.
     def pesoTotalRochas(self):                      
-        return sum(self.rochatipo1) + sum(self.rochatipo2) + sum(self.rochatipo3)
+        return float(sum(self.rochatipo1) + sum(self.rochatipo2) + sum(self.rochatipo3))
 
 # função para equilibrar a lista
     def retirarPedras(self):
@@ -95,14 +95,14 @@ class Rocha:
             diferenca = maiorQ - menorQ                 # calcular a diferença do maior número para o menor
             if diferenca > 1:                           # a diferença do maior para o menor vai servir para abater elementos da maior lista
                     if maiorQ == q1:
-                        while menorQ < len(rochatipo1)-1:
-                            rochatipo1.pop(len(rochatipo1)-1)
+                        while menorQ < len(self.rochatipo1)-1:
+                            self.rochatipo1.pop(len(self.rochatipo1)-1)
                     if maiorQ == q2:
-                        while menorQ < len(rochatipo2)-1:
-                            rochatipo1.pop(len(rochatipo2)-1)
+                        while menorQ < len(self.rochatipo2)-1:
+                            self.rochatipo2.pop(len(self.rochatipo2)-1)
                     if maiorQ == q3:
-                        while menorQ < len(rochatipo3)-1:
-                            rochatipo1.pop(len(rochatipo3)-1)
+                        while menorQ < len(self.rochatipo3)-1:
+                            self.rochatipo3.pop(len(self.rochatipo3)-1)
         print('Rochas retiradas. Tipos de rochas equilibradas.')
         
 
@@ -112,15 +112,28 @@ class Lixo:
         self.pilhaLixoMetal = Pilha()               # Lista para lixo do tipo metal.
         self.pilhaLixoFunk = Pilha()                # Lista para lixo do tipo não metal.
 
-# função para incluir lixo  
-    def incluirLixo(self, pesoLixo):
-        self.pilhaLixo.push(pesoLixo)
+# função para incluir lixo metal
+    def incluirLixoMetal(self, pesoLixo):
+        return self.pilhaLixoMetal.push(pesoLixo)
 
+# função para incluir lixo não metal
+    def incluirLixoFunk(self, pesoLixo):
+        return self.pilhaLixoFunk.push(pesoLixo)
+
+# função para saber o peso total
+    def pesoTotalLixo(self):
+        return float(sum(self.pilhaLixoMetal) + sum(self.pilhaLixoFunk))
 
 class Curiosity:
-    # constutor
-    def __init__(self, pesoTotal):
-        self.pesoTotal = pesoTotal
+# constutor
+    def __init__(self, pesoTotalRocha, pesoTotalLixo):
+        self.pesoTotalRocha = pesoTotalRocha
+        self.pesoTotalLixo = pesoTotalLixo
+# método
+    def pesoCuriosity(self):
+        return float((self.pesoTotalRocha + self.pesoTotalLixo))
+    
+        
 
 
 
@@ -139,13 +152,49 @@ for i in range(0,npedra):               # inserção do peso das pedras dentro d
 llixo = []                              # lista de lixos.
 nlixo = randint(30,120)                 # número aleatório entre 30 e 120 de elementos na pilha lixo
 for i in range(0,nlixo):                # inserção do pedo do lixo dentro de um range.
-    lpedra.append(round(uniform(1.12,8.55),2))
+    llixo.append(round(uniform(1.12,8.55),2))
 
 
-trip1 = Rocha()
-for i in range(0,10):
-    peso = lpedra[randint(0,len(lpedra))]
+r = Rocha()
+l = Lixo()
+
+
+pesoPedra = lpedra[randint(0,len(lpedra)-1)]
+pesoLixo = llixo[randint(0,len(llixo)-1)]
+
+r.incluirRocha(pesoPedra)
+#l.incluirLixoMetal(pesoLixo)
+#l.incluirLixoFunk(pesoLixo)
+
+
+rPeso = r.pesoTotalRochas()
+#lPeso = l.pesoTotalLixo()
+c = Curiosity(rPeso, 0)
+pesoCuriosity = c.pesoCuriosity()
+
+print(pesoCuriosity)
+print(type(pesoCuriosity))
+
+#while pesoCuriosity < 9.0:
+for i in range(0,5):
+    pesoPedra = lpedra[randint(0,len(lpedra)-1)]
+    r.incluirRocha(pesoPedra)
+    rPeso = r.pesoTotalRochas()
+    print(rPeso)
+    c = Curiosity(rPeso,0)
+    pesoCuriosity = c.pesoCuriosity()
+    print(pesoCuriosity)
+
+#balance = r.retirarPedras()
+#print(pesoCuriosity)
+
+
+print('\n CODIGO OK \n')
+
+'''
+while pesoCuriosity < 9.0:
+    peso = lpedra[randint(0,len(lpedra)-1)]
     trip1.incluirRocha(peso)
-
+    pesoCuriosity = trip1.pesoTotalRochas()
 print('\nPeso total de rochas: ', trip1.pesoTotalRochas())
-
+'''
