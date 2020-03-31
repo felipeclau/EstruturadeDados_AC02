@@ -1,6 +1,7 @@
 # Disciplina: ESTRUTURA DE DADOS
 # Turma: BD3B NOITE
 # Nome Aluno: FELIPE CHIN LAU
+# Nome Aluno: LETICIA MARQUES
 # Professor: JORGE CARLOS VALVERDE REBAZA
 # Data entrega: 31/03/2020
 

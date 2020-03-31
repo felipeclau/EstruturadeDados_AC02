@@ -1,7 +1,6 @@
 # Disciplina: ESTRUTURA DE DADOS
 # Turma: BD3B NOITE
 # Nome Aluno: FELIPE CHIN LAU
-# Nome Aluno: LETICIA MARQUES
 # Professor: JORGE CARLOS VALVERDE REBAZA
 # Data entrega: 31/03/2020
 
@@ -111,19 +110,20 @@ class Rocha:
         print('     Quantidade de rochas do tipo 2: {}.'.format(len(self.rochatipo2)))
         print('     Quantidade de rochas do tipo 3: {}.'.format(len(self.rochatipo3)))
 
+
 class Lixo:
 # contrutor
     def ___init___(self):
-        self.pilhaLixoMetal = Pilha()               # Lista para lixo do tipo metal.
-        self.pilhaLixoFunk = Pilha()                # Lista para lixo do tipo não metal.
+        self.pilhaLixoMetal = []               # Lista para lixo do tipo metal.
+        self.pilhaLixoFunk = []                # Lista para lixo do tipo não metal.
 
 # função para incluir lixo metal
     def incluirLixoMetal(self, pesoLixo):
-        self.pilhaLixoMetal.push(pesoLixo)
+        self.pilhaLixoMetal.append(pesoLixo)
 
 # função para incluir lixo não metal
     def incluirLixoFunk(self, pesoLixo):
-        self.pilhaLixoFunk.push(pesoLixo)
+        self.pilhaLixoFunk.append(pesoLixo)
 
 # função para saber o peso total
     def pesoTotalLixo(self):
@@ -167,7 +167,7 @@ r.incluirRocha(pesoPedra)
 
 pesoLixo = llixo[randint(0,len(llixo)-1)]
 l = Lixo()
-#l.incluirLixoMetal(pesoLixo)
+l.incluirLixoMetal(pesoLixo)
 #l.incluirLixoFunk(pesoLixo)
 
 rPeso = r.pesoTotalRochas()
