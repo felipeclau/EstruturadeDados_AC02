@@ -86,19 +86,41 @@ class Ordenacao:
 from random import randint
 import time
 
-N = 100000
+N = 10000000
 tempo = []
 
 #bubble_sort
+'''
 for i in range(10):  
     lista = [randint(0, N) for i in range(N+1)]
-    print("Lista inicial: ")
-    print(lista)
     lista_sorted = Ordenacao()
     bubble = lista_sorted.bubble_sort(lista)
     print("Lista Ordenada com bubble-sort: ")
-    t = time.process_time()
     tempo.append((time.process_time()))
+'''
+#merge_sort
+'''
+for i in range(10):  
+    lista = [randint(0, N) for i in range(N+1)]
+    lista_sorted = Ordenacao()
+    bubble = lista_sorted.merge_sort(lista)
+    print("Lista Ordenada com merge-sort: Lista ", i)
+    tempo.append((time.process_time()))
+'''
+
+#insertion_sort
+
+for i in range(10):  
+    lista = [randint(0, N) for i in range(N+1)]
+    lista_sorted = Ordenacao()
+    bubble = lista_sorted.merge_sort(lista)
+    print("Lista Ordenada com merge-sort: Lista ", i)
+    tempo.append((time.process_time()))
+
+
+# quick_sort
+
+# counting_sort
 
 print('\n Valor de N = ', N)
 print('Tempo de processo: ',tempo)
