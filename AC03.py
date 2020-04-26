@@ -8,11 +8,12 @@
 
 ''' Pergunta 1: Ranking de Algoritmos de Ordenação'''
 
+# 1.1) Implementação seguindo um esquema de TAD que contenha todos os algoritmos de ordenação como métodos da classe (1 ponto)
 class Ordenacao:
     def __init__(self):
         pass
     
-    def merge_sort(self, lista):
+    def merge_sort(self, lista):                        
         if len(lista) < 2:
             return lista
         centro = len(lista) // 2
@@ -54,20 +55,16 @@ class Ordenacao:
             if ordenado:
                 break
         return lista
-    '''
-    def insertion_sort(self, lista):
+    
+    def insertion_sort(self,lista):
         for i in range(1,len(lista)):
-        #element to be compared
             current = lista[i]
-
-       #comparing the current element with the sorted portion and swapping
-        while i>0 and lista[i-1]>current:
-            lista[i] = lista[i-1]
-            i = i-1
-            lista[i] = current
-
+            while i>0 and lista[i-1]>current:
+                lista[i] = lista[i-1]
+                i = i-1
+                lista[i] = current
         return lista
-
+'''
     def quick_sort(self, lista):
     	if l:
 		    left = [x for x in l if x < l[0]]
@@ -83,11 +80,16 @@ class Ordenacao:
  
 # EXECUÇÃO PROGRAMA
 
+# 1.3) Implementação dos algoritmos buble sort e mergesort. Obter resultados de desempenho médio para 
+#      M = 10 listas com valores aleatórios de tamanhos N = 1000, N = 10000, N = 100000, N = 1000000 e 
+#      N = 10000000. (3 pontos)
+
 from random import randint
 import time
+N = 1000000                               
+tempo = []                              # lista para guardar o tempos de execução do processso, acumulativamente.
+print('Processo iniciado!')
 
-N = 10000000
-tempo = []
 
 #bubble_sort
 '''
@@ -108,19 +110,31 @@ for i in range(10):
     tempo.append((time.process_time()))
 '''
 
-#insertion_sort
+# 1.4) Implementação do algoritmo insertion sort. Obter resultados de desempenho médio para M = 10 
+#      listas com valores aleatórios de tamanhos N = 1000, N = 10000, N = 100000, N = 1000000 e 
+#      N = 10000000. (1 ponto)
 
+#insertion_sort
 for i in range(10):  
     lista = [randint(0, N) for i in range(N+1)]
     lista_sorted = Ordenacao()
-    bubble = lista_sorted.merge_sort(lista)
-    print("Lista Ordenada com merge-sort: Lista ", i)
+    bubble = lista_sorted.insertion_sort(lista)
+    print("Lista Ordenada com insertion-sort: Lista ", i)
     tempo.append((time.process_time()))
 
+# 1.5) Implementação do algoritmo quicksort. Obter resultados de desempenho médio para M = 10 
+#      listas com valores aleatórios de tamanhos N = 1000, N = 10000, N = 100000, N = 1000000 
+#      e N = 10000000. (2 pontos)
 
 # quick_sort
 
+
+# 1.6) Implementação do algoritmo counting sort. Obter resultados de desempenho médio para M = 10 
+#      listas com valores aleatórios de tamanhos N = 1000, N = 10000, N = 100000, N = 1000000 e 
+#      N = 10000000. (2 pontos)
+
 # counting_sort
+
 
 print('\n Valor de N = ', N)
 print('Tempo de processo: ',tempo)

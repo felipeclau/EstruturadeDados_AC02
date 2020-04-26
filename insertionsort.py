@@ -7,9 +7,9 @@ def insertionSort(alist):
 
        #comparing the current element with the sorted portion and swapping
        while i>0 and alist[i-1]>current:
-           alist[i] = alist[i-1]
-           i = i-1
-          alist[i] = current
+            alist[i] = alist[i-1]
+            i = i-1
+            alist[i] = current
 
        #print(alist)
 
