@@ -29,14 +29,14 @@ class Ordenacao:
             return lista_L
         result = []
         index_L = index_R = 0
-        while len(result) < len(lista_L) + len(lista_R):
+        while len(result) < len(lista_L) + len(lista_R):            # processa a lista da esquerda e direta, e a lista final deve ter o mesmo número de elementos de ambas as listas.
             if lista_L[index_L] <= lista_R[index_R]:
                 result.append(lista_L[index_L])
                 index_L += 1
             else:
                 result.append(lista_R[index_R])
                 index_R += 1
-            if index_R == len(lista_R):
+            if index_R == len(lista_R):                             # Se alguma das listas é "esvaziada" então copia-se os elementos restantes da outra lista na lista de resultados e fecha-se o loop
                 result += lista_L[index_L:]
                 break
             if index_L == len(lista_L):
@@ -47,7 +47,7 @@ class Ordenacao:
     def bubble_sort(self, lista):
         n = len(lista)
         for i in range(n):
-            ordenado = True 
+            ordenado = True                                            # flag para identificar se a lista já está ordenada.
             for j in range(n - i - 1):
                 if lista[j] > lista[j + 1]:
                     lista[j], lista[j + 1] = lista[j + 1], lista[j]
@@ -66,7 +66,8 @@ class Ordenacao:
         return lista
 
     def quick_sort(self, lista):
-        if len(lista) <= 1: return lista
+        if len(lista) <= 1: 
+            return lista
         m = lista[0]
         return self.quick_sort([i for i in lista if i < m]) + \
             [i for i in lista if i == m] + \
