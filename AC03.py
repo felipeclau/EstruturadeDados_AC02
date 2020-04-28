@@ -13,7 +13,7 @@ class Ordenacao:
     def __init__(self):
         pass
     
-    def merge_sort(self, lista):                        
+    def merge_sort(self, lista):                                    # separa a lista em duas, sucessivamente, e depois compara as duas listas, organizando
         if len(lista) < 2:
             return lista
         centro = len(lista) // 2
@@ -22,7 +22,7 @@ class Ordenacao:
         return self.merge(lista_L, lista_R)
 
 
-    def merge(self, lista_L, lista_R):
+    def merge(self, lista_L, lista_R):                              # separa a lista em duas, comparando as duas.
         if len(lista_L) == 0:
             return lista_R
         if len(lista_R) == 0:
@@ -71,11 +71,24 @@ class Ordenacao:
         return self.quick_sort([i for i in lista if i < m]) + \
             [i for i in lista if i == m] + \
             self.quick_sort([i for i in lista if i > m])
+    
+    def counting_sort(self, lista):
+        k = max(lista) + 1                                  # constante para poder cria uma lista com a quantidade de indices do maior valor da lista + 1
+        count_list = [0]*(k)                                # lista criada com a quantidade k+1 de indices 
+ 
+        for n in lista:                                     # loop para adicionar o valor de 1 no indice da 'count_list' correspontende ao valor da lista
+            count_list[n] = count_list[n] + 1
+    
+        i=0
+        for n in range(len(count_list)):                    # substituindo os valores da lista de acordo com o indices na lista 'count_list'
+            while count_list[n] > 0:
+                lista[i] = n
+                i+=1
+                count_list[n] -= 1
 
- 
- 
- 
-# EXECUÇÃO PROGRAMA
+
+
+# # # # #  EXECUÇÃO PROGRAMA # # # # #  
 ''' 
     A execução do programa deve ser feita retirando as aspas triplas para execução dos algoritmos. Isso foi 
     necessário para que não haja execução dos 5 algoritmos, cada um executando um loop de 10 ciclos. Dependendo
@@ -137,13 +150,14 @@ for i in range(10):
 #      e N = 10000000. (2 pontos)
 
 # quick_sort
-
+'''
 for i in range(10):  
     lista = [randint(0, N) for i in range(N+1)]
     lista_sorted = Ordenacao()
     quick = lista_sorted.quick_sort(lista)
     print("Lista Ordenada com quick-sort: Lista ", i)
     tempo.append((time.process_time()))
+'''
 
 
 # 1.6) Implementação do algoritmo counting sort. Obter resultados de desempenho médio para M = 10 
@@ -152,6 +166,12 @@ for i in range(10):
 
 # counting_sort
 
+for i in range(10):  
+    lista = [randint(0, N) for i in range(N+1)]
+    lista_sorted = Ordenacao()
+    quick = lista_sorted.counting_sort(lista)
+    print("Lista Ordenada com counting-sort: Lista ", i)
+    tempo.append((time.process_time()))
 
 print('\n Valor de N = ', N)
 print('Tempo de processo: ',tempo)
