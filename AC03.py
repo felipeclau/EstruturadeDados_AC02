@@ -107,7 +107,7 @@ import time
 #N = 10000
 #N = 100000
 #N = 1000000
-N = 10000000                              
+#N = 10000000                              
 tempo = []                              # lista para guardar o tempos de execução do processso, acumulativamente.
 print('Processo iniciado!')
 
@@ -158,7 +158,10 @@ for i in range(10):
     print("Lista Ordenada com quick-sort: Lista ", i)
     tempo.append((time.process_time()))
 '''
+<<<<<<< HEAD
 
+=======
+>>>>>>> a570b5884c04ee74ed47494bac669ef0071418f5
 
 # 1.6) Implementação do algoritmo counting sort. Obter resultados de desempenho médio para M = 10 
 #      listas com valores aleatórios de tamanhos N = 1000, N = 10000, N = 100000, N = 1000000 e 
